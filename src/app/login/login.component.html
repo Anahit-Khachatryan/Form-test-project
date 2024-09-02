@@ -1,0 +1,38 @@
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="form-control">
+        <input type="email" 
+               placeholder="Email" 
+               formControlName="email"
+               [ngClass]="(loginForm.get('email')?.touched && loginForm.get('email')?.invalid) ? 'invalid-control': ''">
+        <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+            <div *ngIf="loginForm.get('email')?.errors?.['required']">
+                <span class="invalid-text">Required Email</span>
+            </div>
+            <div *ngIf="loginForm.get('email')?.errors?.['email']">
+                <span class="invalid-text">Must me email format</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <input type="password" 
+               placeholder="Email" 
+               formControlName="password"
+               class="invalid-control"
+               [ngClass]="(loginForm.get('password')?.touched && loginForm.get('password')?.invalid) ? 'invalid-control': ''">
+        <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+            <div *ngIf="loginForm.get('password')?.errors?.['required']">
+                <span class="invalid-text">Required Email</span>
+            </div>
+            <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                <span class="invalid-text">Password length must be {{loginForm.get('password')?.getError('minlength')?.requiredLength}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button>Login</button>
+    </div>
+    <div>
+        <a routerLink="/register">Register</a>
+    </div>
+</form>

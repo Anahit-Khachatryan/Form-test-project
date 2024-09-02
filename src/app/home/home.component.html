@@ -1,0 +1,7 @@
+<div>
+    <input type="text" [(ngModel)]="search" placeholder="search" (ngModelChange)="onFilter()">
+</div>
+
+@for(user of users; track user.id) {
+    <div>{{user.id}} {{user | name}}</div>
+}

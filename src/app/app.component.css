@@ -1,0 +1,21 @@
+.list {
+  padding: 16px;
+  background-color: aliceblue;
+}
+
+.list-item {
+  border-radius: 3px;
+  border: 1px solid green;
+  background-color: green;
+  margin-bottom: 15px;
+}
+
+.form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.form > div {
+    margin-left: 16px;
+    margin-right: 16px;
+}

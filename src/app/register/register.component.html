@@ -1,0 +1,51 @@
+<p>Register</p>
+<form [formGroup]="regiterForm" (ngSubmit)="onRegister()">
+    <div class="form-control">
+        <input type="text" placeholder="First Name" formControlName="firstName"
+            [ngClass]="{'invalid-control': regiterForm.controls['firstName'].invalid && regiterForm.controls['firstName'].touched}">
+        <div *ngIf="regiterForm.controls['firstName'].invalid && regiterForm.controls['firstName'].touched">
+            <span *ngIf="regiterForm.get('firstName')?.errors?.['required']">
+                First Name Required
+            </span>
+        </div>
+    </div>
+    <div class="form-control">
+        <input type="text" placeholder="Last Name" formControlName="lastName"
+            [ngClass]="{'invalid-control': regiterForm.controls['lastName'].invalid && regiterForm.controls['lastName'].touched}">
+        <div *ngIf="regiterForm.controls['lastName'].invalid && regiterForm.controls['lastName'].touched">
+            <span *ngIf="regiterForm.get('lastName')?.errors?.['required']">
+                Last Name Required
+            </span>
+        </div>
+    </div>
+    <div class="form-control">
+        <input type="email" placeholder="Email" formControlName="email"
+               [ngClass]="{'invalid-control': regiterForm.controls['email'].invalid && regiterForm.controls['email'].touched}">
+        <div *ngIf="regiterForm.controls['email'].invalid && regiterForm.controls['email'].touched">
+            <span *ngIf="regiterForm.get('email')?.errors?.['required']">
+                Last Name Required
+            </span>
+            <span *ngIf="regiterForm.get('email')?.errors?.['email']">
+                Must be email format
+            </span>
+        </div>
+    </div>
+    <div class="form-control">
+        <input type="password" placeholder="Password" formControlName="password"
+            [ngClass]="{'invalid-control': regiterForm.controls['password'].invalid && regiterForm.controls['password'].touched}">
+        <div *ngIf="regiterForm.controls['password'].invalid && regiterForm.controls['password'].touched">
+            <span *ngIf="regiterForm.get('password')?.errors?.['required']">
+                Password Required
+            </span>
+            <span *ngIf="regiterForm.get('password')?.errors?.['minlength']">
+                Password must be {{regiterForm.get('password')?.getError('minlength')?.requiredLength}}
+            </span>
+        </div>
+    </div>
+    <div class="form-control">
+        <button>Register</button>
+    </div>
+    <div>
+        <a routerLink="/login">Login</a>
+    </div>
+</form>
